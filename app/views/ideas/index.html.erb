@@ -1,0 +1,19 @@
+<h1>Flowers Planted</h1>
+<br>
+<p>Proportion checked:<%= evaluate_checkbox %></p>
+<h2>List of Flowers</h2>
+
+<% @ideas.in_groups_of(4) do |group| %>
+  <div class="row">
+    <% group.compact.each do |idea| %>
+      <div class="span5">
+        <h4><%= link_to idea.name, idea %></h4>
+        <%= image_tag idea.picture_url, :width => '50' if idea.picture.present?%>
+        <br>
+        <%= idea.description %>
+        <br>
+        <%= idea.checkbox %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
